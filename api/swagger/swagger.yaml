@@ -884,6 +884,18 @@ paths:
             description: Error
             schema:
               $ref: "#/definitions/ErrorResponse"
+    head:
+      operationId: healthCheck
+      description: Healthcheck HEAD operator
+      responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/definitions/HealthChekResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/definitions/ErrorResponse"
 # complex objects have schema definitions
 definitions:
   AnalyticsReport:
