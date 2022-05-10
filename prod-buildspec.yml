@@ -1,0 +1,28 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_DEFAULT_REGION: "us-east-1"
+    AWS_ACCOUNT_ID: "211905799377"
+    IMAGE_REPO_NAME: "cboard-api"
+
+phases:
+  pre_build:
+    commands:
+      - echo logging into Amazon ECR
+      - aws --version
+      - AWS_DOCKER_REPOSITORY=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - AWS_LOGIN_PASSWORD=$(aws ecr get-login-password)
+      - docker login -u AWS -p $AWS_LOGIN_PASSWORD https://$AWS_DOCKER_REPOSITORY
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME
+  build:
+    commands:
+      - echo pulling latest docker image
+      - docker pull $REPOSITORY_URI:latest
+      - echo Tagging production LATEST with STABLE tag
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:stable
+      - docker push $REPOSITORY_URI:stable
+      - printf '[{"name":"production-restore-backend","imageUri":"%s"}]' $REPOSITORY_URI:stable > prod_imagedefinitions.json
+artifacts:
+  files: 
+    - prod_imagedefinitions.json
