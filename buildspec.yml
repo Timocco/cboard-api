@@ -39,4 +39,4 @@ artifacts:
   files:
     - imagedefinitions.json
     - prod_imagedefinitions.json
-    # - prod_deploy_buildspec.yml
+    - prod-buildspec.yml
