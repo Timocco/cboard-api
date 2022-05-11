@@ -22,7 +22,7 @@ phases:
       - echo Tagging production LATEST with STABLE tag
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:stable
       - docker push $REPOSITORY_URI:stable
-      - printf '[{"name":"production-restore-backend","imageUri":"%s"}]' $REPOSITORY_URI:stable > prod_imagedefinitions.json
+      - printf '[{"name":"prod-cboard-api","imageUri":"%s"}]' $REPOSITORY_URI:stable > prod_imagedefinitions.json
 artifacts:
   files: 
     - prod_imagedefinitions.json
