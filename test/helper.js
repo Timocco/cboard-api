@@ -7,7 +7,7 @@ var request = require('supertest');
 const User = require('../api/models/User');
 const should = chai.should();
 const uuid = require('uuid');
-const fs   = require('fs');
+const fs = require('fs');
 const jwt = require('jsonwebtoken');
 
 
@@ -302,19 +302,19 @@ async function createMochaBoard(server, token) {
   return res.body.id;
 }
 
-function createValidSsoJWtToken(id, role){
-  const signOptions = { issuer: 'RESTORE-Skills', subject: `${id}`, audience: "http://localhost:8080", expiresIn: "12h", algorithm: "RS256" }
-  const privateKEY  = fs.readFileSync(`${__dirname}/test-private.key`, 'utf8');
+function createValidSsoJWtToken(id, role) {
+  const signOptions = { issuer: 'RESTORE-Skills', subject: `${id}`, audience: "http://localhost:8088", expiresIn: "12h", algorithm: "RS256" }
+  const privateKEY = fs.readFileSync(`${__dirname}/test-private.key`, 'utf8');
   let payload = {
     firstName: 'Sample',
     lastName: 'John',
     businessGroupId: 12,
     organizationId: 23,
   };
-  if(id!==null){
+  if (id !== null) {
     payload["id"] = id;
   }
-  if(role!==null){
+  if (role !== null) {
     payload["role"] = role;
   }
   const token = jwt.sign(payload, privateKEY, signOptions)
