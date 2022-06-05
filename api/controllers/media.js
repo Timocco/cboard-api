@@ -1,7 +1,5 @@
 const { createBlockBlobFromText } = require('../helpers/blob');
 
-const BLOB_CONTAINER_NAME = process.env.BLOB_CONTAINER_NAME || 'cblob';
-
 module.exports = {
   uploadMedia
 };
@@ -11,16 +9,28 @@ async function uploadMedia(req, res) {
 
   try {
     const uploadedFile = req.files.file[0];
+
+    /* 
+    NOTICE !! 
+    you have to have the 
+    "CBOARD_CONTAINER_NAME=????" variable in your environment variables
+    */
+    var containerName = process.env.CBOARD_CONTAINER_NAME;
+
     const [file, fileUrl] = await createBlockBlobFromText(
-      BLOB_CONTAINER_NAME,
+      containerName,
       uploadedFile.originalname,
-      uploadedFile
+      uploadedFile,
+      ''
     );
+
     url = fileUrl;
   } catch (err) {
+    console.error(err);
     return res.status(500).json({
-      message: 'ERROR: Unable to upload media file . ' + err.message
+      message: 'ERROR: Unable to upload media file: ' + err.message
     });
   }
+
   return res.status(200).json({ url });
 }
