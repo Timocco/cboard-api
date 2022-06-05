@@ -24,11 +24,16 @@ async function uploadMedia(req, res) {
       ''
     );
 
+    console.log('\nDATA: ');
+    console.log(file);
+    console.log(fileUrl);
+
     url = fileUrl;
   } catch (err) {
+    console.log('\nERROR: ');
     console.error(err);
     return res.status(500).json({
-      message: 'ERROR: Unable to upload media file: ' + err.message
+      message: 'ERROR: something went wrong: ' + err.message
     });
   }
 
