@@ -4,6 +4,8 @@ module.exports = {
   uploadMedia
 };
 
+const CBOARD_CONTAINER_NAME = process.env.CBOARD_CONTAINER_NAME;
+
 async function uploadMedia(req, res) {
   let url = null;
 
@@ -15,10 +17,9 @@ async function uploadMedia(req, res) {
     you have to have the 
     "CBOARD_CONTAINER_NAME=????" variable in your environment variables
     */
-    var containerName = process.env.CBOARD_CONTAINER_NAME;
 
     const [file, fileUrl] = await createBlockBlobFromText(
-      containerName,
+      CBOARD_CONTAINER_NAME,
       uploadedFile.originalname,
       uploadedFile,
       ''
