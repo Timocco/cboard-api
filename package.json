@@ -22,7 +22,6 @@
   ],
   "main": "app.js",
   "dependencies": {
-    "@snyk/protect": "^1.914.0",
     "aws-sdk": "^2.1146.0",
     "azure-storage": "^2.10.6",
     "bcryptjs": "^2.4.3",
@@ -75,9 +74,7 @@
     "dev": "nodemon app.js",
     "start": "node app.js",
     "test": "NODE_ENV=test JWT_PUBLIC_KEY=$(cat ./test/test-public.key) swagger project test",
-    "precommit": "lint-staged",
-    "snyk-protect": "snyk-protect",
-    "prepare": "npm run snyk-protect"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,json,css}": [
