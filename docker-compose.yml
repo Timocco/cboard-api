@@ -1,13 +1,13 @@
-version : "3.0"
+version: '3.0'
 services:
   api:
     build:
       dockerfile: Dockerfile
       context: .
     volumes:
-      - "./:/opt/cboard-api/"
+      - './:/opt/cboard-api/'
     ports:
-      - "8088:10010"
+      - '8088:10010'
     environment:
       - AZURE_STORAGE_CONNECTION_STRING
       - FACEBOOK_APP_ID=1234567890
@@ -26,8 +26,13 @@ services:
       - DD_ENV="dev"
       - DD_SERVICE="cboard-api"
       - DD_VERSION="1.3.1"
-    command: "npm run dev"
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - CBOARD_CONTAINER_NAME
+      - USE_CLOUD_SERVICE
+      - CBOARD_CDN_DISTRIBUTION_ID
+    command: 'npm run dev'
   db:
     image: mongo
     ports:
-      - "27017:27017"
+      - '27017:27017'
