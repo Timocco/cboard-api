@@ -36,10 +36,7 @@ async function createBlockBlobFromText_AWS(
     variables in your environment variables
     so that it could login to it
   */
-  const s3 = new AWS.S3({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    accessSecretKey: process.env.AWS_SECRET_ACCESS_KEY
-  });
+  const s3 = new AWS.S3();
 
   var s3_bucket_params = {
     Bucket: containerName,
