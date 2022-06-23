@@ -76,6 +76,7 @@ for using AWS s3 bucket and more services you need to configure the next:
    export AWS_SECRET_ACCESS_KEY=???
    export USE_CLOUD_SERVICE=??? ("AWS" or "AZURE")
    export CBOARD_CDN_DISTRIBUTION_ID=???
+   export CBOARD_CDN_DIRECTORY=??? (the path to upload to)
    export CBOARD_CONTAINER_NAME=??? (the name of the s3 bucket or container)
    "
 3. hit "escape", then ":wq" and "enter" (you'll be back in the terminal)
