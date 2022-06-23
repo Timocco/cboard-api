@@ -98,7 +98,8 @@ async function createBlockBlobFromText_AWS(
             else {
               console.log('\nCDN SUCCESS refresh cdn: ');
               console.log(data);
-              resolve([file, file.Location]);
+              const cdnLocation = `//${file.Bucket}/${file.Key}`;
+              resolve([file, cdnLocation]);
             }
           });
         }
