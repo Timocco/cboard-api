@@ -31,6 +31,7 @@ services:
       - CBOARD_CONTAINER_NAME
       - USE_CLOUD_SERVICE
       - CBOARD_CDN_DISTRIBUTION_ID
+      - CBOARD_CDN_DIRECTORY
     command: 'npm run dev'
   db:
     image: mongo

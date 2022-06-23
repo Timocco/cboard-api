@@ -16,7 +16,7 @@ async function createBlockBlobFromText_AWS(
   const uuidSuffix = uuidv1()
     .split('-')
     .pop();
-  const finalName = `user-media/${prefix}_${ts}_${uuidSuffix}_${fileName
+  const finalName = `${process.env.CBOARD_CDN_DIRECTORY}/${prefix}_${ts}_${uuidSuffix}_${fileName
     .toLowerCase()
     .trim()}`;
 
