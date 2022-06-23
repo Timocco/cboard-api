@@ -16,7 +16,7 @@ async function createBlockBlobFromText_AWS(
   const uuidSuffix = uuidv1()
     .split('-')
     .pop();
-  const finalName = `${prefix}_${ts}_${uuidSuffix}_${fileName
+  const finalName = `${process.env.CBOARD_CDN_DIRECTORY}/${prefix}_${ts}_${uuidSuffix}_${fileName
     .toLowerCase()
     .trim()}`;
 
@@ -46,7 +46,7 @@ async function createBlockBlobFromText_AWS(
 
   // try to upload media (image) to s3 bucket
   var promiseUploadMediaToS3BuckerAWS = new Promise((resolve, reject) => {
-    s3.upload(s3_bucket_params, function(error, file) {
+    s3.upload(s3_bucket_params, function (error, file) {
       if (error) {
         console.log('\nS3 ERROR uploading media: ');
         console.error(error, error.stack);
@@ -81,7 +81,7 @@ async function createBlockBlobFromText_AWS(
             }
           };
 
-          var cdn = cloudfront.createInvalidation(params, function(
+          var cdn = cloudfront.createInvalidation(params, function (
             error,
             data
           ) {
