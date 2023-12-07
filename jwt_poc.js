@@ -1,7 +1,7 @@
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 
-const signOptions = { issuer: 'RESTORE-Skills', subject: "123", audience: "http://localhost:8088", expiresIn: "12h", algorithm: "RS256" }
+const signOptions = { issuer: 'RESTORE-Skills', subject: "123", audience: "http://localhost:3088", expiresIn: "12h", algorithm: "RS256" }
 const payload = {
   id: 123,
   firstName: 'Sample',

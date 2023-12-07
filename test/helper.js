@@ -303,7 +303,7 @@ async function createMochaBoard(server, token) {
 }
 
 function createValidSsoJWtToken(id, role) {
-  const signOptions = { issuer: 'RESTORE-Skills', subject: `${id}`, audience: "http://localhost:8088", expiresIn: "12h", algorithm: "RS256" }
+  const signOptions = { issuer: 'RESTORE-Skills', subject: `${id}`, audience: "http://localhost:3088", expiresIn: "12h", algorithm: "RS256" }
   const privateKEY = fs.readFileSync(`${__dirname}/test-private.key`, 'utf8');
   let payload = {
     firstName: 'Sample',
