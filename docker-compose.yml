@@ -7,7 +7,7 @@ services:
     volumes:
       - './:/opt/cboard-api/'
     ports:
-      - '8088:10010'
+      - '3088:10010'
     environment:
       - AZURE_STORAGE_CONNECTION_STRING
       - FACEBOOK_APP_ID=1234567890
